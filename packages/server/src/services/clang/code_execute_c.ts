@@ -15,7 +15,9 @@ export async function code_compile_c(file_name: string) {
 
 export async function code_run_c(file_name: string) {
   try {
-    const { stdout } = await exec(`cd files/ && ./${file_name} < input.txt`);
+    const { stdout } = await exec(
+      `cd files/ && ./${file_name} < ${file_name}.txt`
+    );
     return {
       success: true,
       output: stdout,

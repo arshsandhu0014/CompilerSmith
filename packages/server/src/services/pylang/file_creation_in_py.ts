@@ -1,15 +1,15 @@
 import exec from "await-exec";
 
-export default async function file_creation_in_cpp(
+export default async function file_creation_in_py(
   code_body: string,
   file_name: string
 ) {
   try {
     const { stderr, stdout, err } = await exec(
-      `echo ${code_body} >> files/${file_name}.cpp`
+      `echo ${code_body} >> files/${file_name}.py`
     );
     return {
-      file_name: `files/${file_name}.cpp`,
+      file_name: `files/${file_name}.py`,
       module: "file_creation",
       success: true,
     };
@@ -18,7 +18,7 @@ export default async function file_creation_in_cpp(
   }
 }
 
-export async function input_file_creation_in_cpp(
+export async function input_file_creation_in_py(
   code_input: string,
   file_name: string
 ) {
