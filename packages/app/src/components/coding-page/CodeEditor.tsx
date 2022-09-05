@@ -1,17 +1,72 @@
 import React from "react";
 import { FaPlay } from "react-icons/fa";
 import CodeArea from "./CodeArea";
+import { IoIosArrowDown } from "react-icons/io";
 
 interface LanguageSelectorPropType {
   langSelected: string;
   setLangSelected: Function;
 }
 
-function LanguageSelector({ setLangSelected }: LanguageSelectorPropType) {
+function LanguageSelector({
+  langSelected,
+  setLangSelected,
+}: LanguageSelectorPropType) {
+  const [dropDownOpen, setDropDownOpen] = React.useState<boolean>(false);
   const changeLanguage = (e: any) => {
     setLangSelected(e.target.value);
   };
-  return <div></div>;
+  const changeDropDownVisibility = () => {
+    setDropDownOpen(!dropDownOpen);
+  };
+  return (
+    <div className="relative">
+      <button
+        onClick={changeDropDownVisibility}
+        className="pl-4 pr-2 mr-2 py-1 flex flex-row gap-2 justify-center items-center   text-neutral-100 font-medium  bg-neutral-50 bg-opacity-30 rounded-lg"
+      >
+        {langSelected === "cpp" && <p className="text-base">C++</p>}
+        {langSelected === "c" && <p className="text-base">C</p>}
+        {langSelected === "py" && <p className="text-base">Python</p>}
+        <IoIosArrowDown fontSize={15} className="mt-1" />
+      </button>
+
+      <div
+        aria-label="dropdown menu"
+        className={`absolute z-10 bg-neutral-500 bg-opacity-90 rounded-lg flex flex-col
+        ${dropDownOpen === true ? "block" : "hidden"} 
+        `}
+      >
+        <button
+          onClick={() => {
+            setLangSelected("c");
+            setDropDownOpen(false);
+          }}
+          className="px-4 py-1 hover:bg-black hover:bg-opacity-20 text-neutral-50"
+        >
+          C
+        </button>
+        <button
+          onClick={() => {
+            setLangSelected("cpp");
+            setDropDownOpen(false);
+          }}
+          className="px-4 py-1 hover:bg-black hover:bg-opacity-20 text-neutral-50"
+        >
+          C++
+        </button>
+        <button
+          onClick={() => {
+            setLangSelected("py");
+            setDropDownOpen(false);
+          }}
+          className="px-4 py-1 hover:bg-black hover:bg-opacity-20 text-neutral-50"
+        >
+          Python
+        </button>
+      </div>
+    </div>
+  );
 }
 
 export default function CodeEditor() {
@@ -34,7 +89,7 @@ export default function CodeEditor() {
         >
           <div arial-label="file names" className="my-2 flex flex-row gap-2">
             <div className="rounded-tl-xl rounded-br-xl border px-4 py-2    text-neutral-100">
-              newfile.{langSelected}
+              file.{langSelected}
             </div>
           </div>
           <div
@@ -52,10 +107,14 @@ export default function CodeEditor() {
               <FaPlay />
               Run
             </button>
+            {/**
+               * 
             <div className="h-5 w-0 border-l ml-3 mr-3 bg-neutral-300" />
             <button className="font-medium underline flex flex-row gap-1 items-center text-neutral-100 active:scale-90 ">
               {"</>"} Compile
             </button>
+               * 
+               */}
           </div>
         </div>
         <div className="h-0 w-full border-t border-t-neutral-200" />

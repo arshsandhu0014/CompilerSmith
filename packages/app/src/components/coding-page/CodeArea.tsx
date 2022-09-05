@@ -2,8 +2,7 @@ import React, { useEffect } from "react";
 import ReactPrismEditor from "react-prism-editor";
 import Editor from "@monaco-editor/react";
 
-const cppCode = `
-#include <iostream>
+const cppCode = `#include <iostream>
 using namespace std;
 
 int main() {
@@ -12,9 +11,7 @@ int main() {
 }
 `;
 
-const clangCode = `
-#include <stdio.h>
-
+const clangCode = `#include <stdio.h>
 int main() {
 	// your code goes here
 
@@ -22,9 +19,8 @@ int main() {
 }
 `;
 
-const pyCode = `
-print("Hello,World in Python")
-
+const pyCode = `print("Hello,World in Python")
+#your code goes here
 `;
 export default function CodeArea({
   langSelected,
@@ -40,7 +36,7 @@ export default function CodeArea({
   }
 
   useEffect(() => {
-    if (langSelected == "python") {
+    if (langSelected == "py") {
       setCodeState(pyCode);
     } else if (langSelected == "c") {
       setCodeState(clangCode);
@@ -54,7 +50,7 @@ export default function CodeArea({
       aria-label="code editor holder "
       className="mt-4 border border-neutral-500"
     >
-      {langSelected === "python" && (
+      {langSelected === "py" && (
         <Editor
           theme="vs-dark"
           className="h-128 rounded-md"
