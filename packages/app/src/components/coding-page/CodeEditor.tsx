@@ -13,12 +13,9 @@ export default function CodeEditor() {
   const [codeState, setCodeState] = React.useState<string>("");
   const [langSelected, setLangSelected] = React.useState<string>("c");
   const [customInputState, _] = useAtom(customInputAtom);
-  const [loadingConsoleOutput, setLoadingConsoleOutput] = useAtom(
-    loadingConsoleOutputAtom
-  );
+  const [__, setLoadingConsoleOutput] = useAtom(loadingConsoleOutputAtom);
 
-  const [consoleOutputState, setConsoleOutputState] =
-    useAtom(consoleOutputAtom);
+  const [___, setConsoleOutputState] = useAtom(consoleOutputAtom);
 
   const compileAndRunCode = async () => {
     const codeData = {
@@ -27,16 +24,25 @@ export default function CodeEditor() {
       code_input: customInputState,
     };
     console.log(codeData);
-
     //const res = await axios("http://localhost:8080/");
     setLoadingConsoleOutput(true);
     try {
-      const res = await axios.post("http://localhost:8080/code", codeData);
+      const res = await axios.post(
+        "https://compilersmith.fly.dev/code",
+        codeData
+      );
       console.log(res);
       setConsoleOutputState(res.data);
-    } catch (err) {
+    } catch (err: any) {
       console.error(err);
-      setConsoleOutputState((err as any).response.data);
+      if (err.response.data === undefined) {
+        setConsoleOutputState({
+          message: err.message,
+          code: err.code,
+        });
+      } else {
+        setConsoleOutputState((err as any).response.data);
+      }
     }
     setLoadingConsoleOutput(false);
   };
