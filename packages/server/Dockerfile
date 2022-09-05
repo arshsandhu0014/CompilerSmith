@@ -16,6 +16,8 @@ RUN npm --version
 
 WORKDIR /app
 
+RUN mkdir -p /app/files 
+
 COPY package*.json ./
 
 RUN npm install

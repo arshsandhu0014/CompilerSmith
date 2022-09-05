@@ -1,33 +1,22 @@
 import { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
 import { codeRouterRequestType } from "../../controllers/codeRouteHandler";
-import makeid from "../../utils/makeid";
-import { code_compile_c, code_run_c } from "./code_execute_c";
-import file_creation_in_c, {
-  input_file_creation_in_c,
-} from "./file_creation_in_c";
+import generateFileName from "../../utils/generateFileName";
+import createFilesForClang from "./createFiles";
+import compileClangCode, { runClangCode } from "./executeCode";
 
 export default async function clangServices(
   fastify: FastifyInstance,
   request: FastifyRequest<codeRouterRequestType>,
   reply: FastifyReply
 ) {
-  const file_name = makeid(10) + "file";
+  const filename = generateFileName(10);
   const { code_body, code_input } = request.body;
-
   try {
-    const response_1 = await file_creation_in_c(code_body, file_name);
-    const response_2 = await input_file_creation_in_c(code_input, file_name);
-    const response_3 = await code_compile_c(file_name);
-    const response_4 = await code_run_c(file_name);
-    reply.send(response_4);
-  } catch (err: any) {
-    throw new Error(err);
+    await createFilesForClang(filename, code_body, code_input);
+    await compileClangCode(filename);
+    const response = await runClangCode(filename);
+    reply.send(response);
+  } catch (err) {
+    reply.status(500).send(err);
   }
-
-  /** *
-   *
-   * file creation * compile
-   * run
-   *
-   */
 }

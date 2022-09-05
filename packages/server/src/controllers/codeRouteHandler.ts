@@ -35,10 +35,11 @@ export default async function codeRouterHandler(
   reply: FastifyReply
 ) {
   const lang = request.body.lang;
-  if (lang == "c") {
-    await clangServices(fastify, request, reply);
-  } else if (lang == "cpp") {
+  console.log("request incoming");
+  if (lang == "cpp") {
     await cpplangServices(fastify, request, reply);
+  } else if (lang == "c") {
+    await clangServices(fastify, request, reply);
   } else if (lang == "py") {
     await pylangServices(fastify, request, reply);
   } else {
