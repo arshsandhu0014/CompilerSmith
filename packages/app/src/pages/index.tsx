@@ -6,17 +6,9 @@ import coderLottieAnimation from "../../public/coder_lottie.json";
 import LandingInfo from "../components/landing-page/LandingInfo";
 import BackgroundImage from "../ui/BackgroundImage";
 
-/*
-
-
-
-*/
-
 const Home: NextPage = () => {
   return (
     <div>
-      <BackgroundImage />
-      <Navbar />
       <LandingInfo />
     </div>
   );

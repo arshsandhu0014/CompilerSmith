@@ -3,6 +3,8 @@ import Link from "next/link";
 import { useEffect } from "react";
 import logo from "../../../public/logo.png";
 import NextImage from "next/image";
+import Lottie from "react-lottie-player";
+import githubLottieAnimation from "../../../public/github_logo_lottie.json";
 
 export default function Navbar() {
   const router = useRouter();
@@ -22,9 +24,10 @@ export default function Navbar() {
             <button
               className={`${
                 router.pathname === "/"
-                  ? " bg-neutral-50 bg-opacity-20 rounded-lg px-2 py-2 backdrop-opacity-0"
+                  ? " bg-neutral-50 bg-opacity-20 rounded-lg px-2 py-2 backdrop-opacity-0 font-bold"
                   : ""
-              }`}
+              }
+              `}
             >
               Home
             </button>
@@ -33,9 +36,10 @@ export default function Navbar() {
             <button
               className={`${
                 router.pathname === "/code"
-                  ? " bg-neutral-50 bg-opacity-20 rounded-lg px-2 py-2 backdrop-opacity-0"
+                  ? " bg-neutral-50 bg-opacity-20 rounded-lg px-2 py-2 backdrop-opacity-0 font-bold"
                   : ""
-              }`}
+              }
+              `}
             >
               Compile
             </button>
@@ -44,19 +48,33 @@ export default function Navbar() {
             <button
               className={`${
                 router.pathname === "/about"
-                  ? " bg-neutral-50 bg-opacity-20 rounded-lg px-2 py-2 backdrop-opacity-0"
+                  ? " bg-neutral-50 bg-opacity-20 rounded-lg px-2 py-2 backdrop-opacity-0 font-bold"
                   : ""
-              }`}
+              }
+              `}
             >
               About Us
             </button>
           </Link>
 
-          <button className="border-white rounded-3xl border px-4 py-2 active:scale-90  cursor-pointer">
-            Sign in
+          <button
+            className="bg-rounded-3xl cursor-pointer"
+            onClick={() => {
+              window.location.assign(
+                "https://github.com/ensorceler/compilersmith"
+              );
+            }}
+          >
+            <Lottie
+              play
+              loop
+              animationData={githubLottieAnimation}
+              className="h-14 w-14"
+            />
           </button>
         </div>
       </div>
     </div>
   );
 }
+// d4145a

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ReactPrismEditor from "react-prism-editor";
 import Editor from "@monaco-editor/react";
 
@@ -38,6 +38,16 @@ export default function CodeArea({
   function handleEditorChange(value: any, event: any) {
     setCodeState(value);
   }
+
+  useEffect(() => {
+    if (langSelected == "python") {
+      setCodeState(pyCode);
+    } else if (langSelected == "c") {
+      setCodeState(clangCode);
+    } else if (langSelected == "cpp") {
+      setCodeState(cppCode);
+    }
+  }, []);
 
   return (
     <div

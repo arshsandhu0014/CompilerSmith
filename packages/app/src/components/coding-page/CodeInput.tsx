@@ -6,8 +6,8 @@ export default function CodeInput() {
       </div>
       <div className="h-0 border-t w-full border-t-neutral-300 mb-2" />
       <textarea
-        defaultValue="give some input..."
-        className="h-48 w-full bg-transparent bg-neutral-100 bg-opacity-10 rounded-lg focus:outline-none text-neutral-200 resize-none px-2 py-2"
+        placeholder="your custom input goes here..."
+        className="h-48 w-full bg-transparent bg-neutral-100 bg-opacity-10 rounded-lg focus:outline-none text-neutral-200 placeholder:text-neutral-300 resize-none px-2 py-2"
       />
     </div>
   );

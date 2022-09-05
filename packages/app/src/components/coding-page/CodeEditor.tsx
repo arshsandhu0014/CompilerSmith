@@ -11,22 +11,7 @@ function LanguageSelector({ setLangSelected }: LanguageSelectorPropType) {
   const changeLanguage = (e: any) => {
     setLangSelected(e.target.value);
   };
-  return (
-    <select
-      onChange={changeLanguage}
-      className="appearance-none bg-transparent placeholder:bg-transparent border text-neutral-100 rounded-xl px-3 focus:outline-none focus:bg-transparent"
-    >
-      <option value="c" className="bg-transparent appearance-none">
-        C
-      </option>
-      <option value="cpp" className="bg-transparent">
-        C++
-      </option>
-      <option value="python" className="bg-transparent">
-        Python
-      </option>
-    </select>
-  );
+  return <div></div>;
 }
 
 export default function CodeEditor() {
@@ -35,7 +20,7 @@ export default function CodeEditor() {
 
   return (
     <div className="flex-1 mt-20 w-140 h-140">
-      <div className="flex flex-row justify-between">
+      <div className="flex flex-row justify-between mb-2">
         <h1 className="font-medium text-neutral-100 text-2xl ">Editor</h1>
         <LanguageSelector
           setLangSelected={setLangSelected}
@@ -49,7 +34,7 @@ export default function CodeEditor() {
         >
           <div arial-label="file names" className="my-2 flex flex-row gap-2">
             <div className="rounded-tl-xl rounded-br-xl border px-4 py-2    text-neutral-100">
-              newfile.c
+              newfile.{langSelected}
             </div>
           </div>
           <div
