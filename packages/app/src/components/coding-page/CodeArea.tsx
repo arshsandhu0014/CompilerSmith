@@ -43,7 +43,7 @@ export default function CodeArea({
     } else if (langSelected == "cpp") {
       setCodeState(cppCode);
     }
-  }, []);
+  }, [langSelected]);
 
   return (
     <div

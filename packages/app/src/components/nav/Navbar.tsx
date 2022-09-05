@@ -12,7 +12,7 @@ export default function Navbar() {
     console.log(router.pathname);
   });
   return (
-    <div className="z-10 text-neutral-100 max-w-4xl ml-auto mr-auto mt-10">
+    <div className="z-10 text-neutral-100 max-w-4xl ml-auto mr-auto pt-10">
       <div className="flex flex-row items-center justify-between">
         <div className="font-medium text-xl flex flex-row gap-2 items-center cursor-pointer">
           <NextImage src={logo} height={30} width={30} />
