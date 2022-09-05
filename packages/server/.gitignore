@@ -1,5 +1,6 @@
 node_modules/
 files/
 dist/
+fly.toml
 npm-debug.log
 
