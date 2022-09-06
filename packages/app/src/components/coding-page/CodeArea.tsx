@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import ReactPrismEditor from "react-prism-editor";
 import Editor from "@monaco-editor/react";
 
 const cppCode = `#include <iostream>
