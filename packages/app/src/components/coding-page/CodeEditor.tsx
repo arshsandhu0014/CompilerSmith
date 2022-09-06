@@ -2,6 +2,8 @@ import React from "react";
 import { FaPlay } from "react-icons/fa";
 import CodeArea from "./CodeArea";
 import { IoIosArrowDown } from "react-icons/io";
+import { IoStopCircle } from "react-icons/io5";
+
 import { useAtom } from "jotai";
 import {
   consoleOutputAtom,
@@ -13,7 +15,9 @@ export default function CodeEditor() {
   const [codeState, setCodeState] = React.useState<string>("");
   const [langSelected, setLangSelected] = React.useState<string>("c");
   const [customInputState, _] = useAtom(customInputAtom);
-  const [__, setLoadingConsoleOutput] = useAtom(loadingConsoleOutputAtom);
+  const [loadingConsoleOutput, setLoadingConsoleOutput] = useAtom(
+    loadingConsoleOutputAtom
+  );
 
   const [___, setConsoleOutputState] = useAtom(consoleOutputAtom);
 
@@ -61,7 +65,7 @@ export default function CodeEditor() {
           aria-label="New file and run and compiler... the header section of the editor"
           className="flex flex-row justify-between"
         >
-          <div arial-label="file names" className="my-2 flex flex-row gap-2">
+          <div aria-label="file names" className="my-2 flex flex-row gap-2">
             <div className="rounded-tl-xl rounded-br-xl border px-4 py-2    text-neutral-100">
               file.{langSelected}
             </div>
@@ -71,10 +75,12 @@ export default function CodeEditor() {
             className="flex flex-row items-center"
           >
             <button
+              disabled={loadingConsoleOutput}
               onClick={compileAndRunCode}
-              className="font-medium underline flex flex-row gap-1 items-center text-neutral-100 active:scale-90 "
+              className={`font-medium underline flex flex-row gap-1 items-center text-neutral-100 
+              ${loadingConsoleOutput === false ? "active:scale-90" : ""}`}
             >
-              <FaPlay />
+              {loadingConsoleOutput === false ? <FaPlay /> : <IoStopCircle />}
               Run
             </button>
             {/**

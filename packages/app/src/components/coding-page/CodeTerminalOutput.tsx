@@ -18,6 +18,17 @@ export default function CodeTerminalOutput() {
       setConsoleOutputState("");
     }
   }, [loadingConsoleOutput]);
+
+  const cleanedOutput = (data: any): string => {
+    if (data.success === true) {
+      return data.output;
+    } else if (data.error == true) {
+      return data.error_type + "\n" + data.err;
+    } else if (data === "") {
+      return "";
+    } else return JSON.stringify(data);
+  };
+
   return (
     <div className="bg-white bg-opacity-10 backdrop-blur-md drop-shadow-lg rounded-xl py-6 px-6 ">
       <div className="flex flex-row items-center gap-2">
@@ -28,9 +39,9 @@ export default function CodeTerminalOutput() {
       </div>
       <div className="h-0 border-t w-full border-t-neutral-300 mb-2" />
       <textarea
-        value={JSON.stringify(consoleOutputState)}
+        value={cleanedOutput(consoleOutputState)}
         disabled
-        className="h-52 w-full bg-neutral-100 bg-opacity-10 rounded-lg focus:outline-none text-neutral-200 resize-none"
+        className="h-52 w-full bg-neutral-100 bg-opacity-10 rounded-lg focus:outline-none text-neutral-200 resize-none px-2 py-1"
       />
     </div>
   );

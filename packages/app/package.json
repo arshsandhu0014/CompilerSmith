@@ -18,19 +18,13 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.4.0",
-    "react-lottie": "^1.2.3",
-    "react-lottie-player": "^1.4.3",
-    "react-prism-editor": "^1.1.2",
-    "react-simple-code-editor": "^0.13.0",
-    "react-syntax-highlighter": "^15.5.0"
+    "react-lottie-player": "^1.4.3"
   },
   "devDependencies": {
     "@types/node": "18.7.14",
     "@types/prismjs": "^1.26.0",
     "@types/react": "18.0.18",
     "@types/react-dom": "18.0.6",
-    "@types/react-lottie": "^1.2.6",
-    "@types/react-syntax-highlighter": "^15.5.5",
     "autoprefixer": "^10.4.8",
     "eslint": "8.23.0",
     "eslint-config-next": "12.2.5",

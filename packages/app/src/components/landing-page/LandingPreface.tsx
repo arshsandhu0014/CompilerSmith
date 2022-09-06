@@ -23,7 +23,8 @@ export default function LandingPreface() {
         variants={taglineanimVariant}
       >
         <h2 className="text-center text-2xl text-neutral-100/70">
-          The best compiler and editor to provide an easy to use and simple IDE
+          The best editor and compiler which provides a simple user friendly
+          interface to code,compile and run
         </h2>
       </motion.div>
 
@@ -38,7 +39,7 @@ export default function LandingPreface() {
           }}
           className="bg-white text-black px-6 py-3 rounded-3xl active:scale-95 shadow-xl flex flex-row gap-1 items-center font-base"
         >
-          I write Code
+          Go Write Code
           <IoIosArrowForward fontSize={18} />
         </button>
       </motion.div>

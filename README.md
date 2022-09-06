@@ -1,35 +1,45 @@
 # CompilerSmith
 
-#### The best compiler and editor to provide an easy to use and simple IDE.
-
 [![Layer 1blck](https://i.im.ge/2022/09/04/OcNwGC.Layer-1blck.png)](https://im.ge/i/OcNwGC)
 
-CompilerSmith allows users to write code in many supported languages. It is a user friendly online compiler that allows you to Write code and run it online.
+##### The best editor and compiler which provides a simple user friendly interface to code,compile and run
+
+CompilerSmith allows users to write code in many supported languages. It is a user friendly online compiler that allows you to write code and run it online.
+The site is live 🥳 now at : [CompilerSmith](https://compilersmithapp.fly.dev)
+
+# Background
+
+so we attended the hackathon at LPU. we coded this together inside 24 hours, unfortunately, some bugs at the last minute constrained us and we couldn't deploy it. Now it's working properly.
 
 ## Structure
 
-[![Screenshot 2022-09-04 102328](https://i.im.ge/2022/09/04/OcNoBc.Screenshot-2022-09-04-102328.jpg)](https://im.ge/i/OcNoBc)
+We created a monorepo using yarn workspaces to contain backend and frontend in a single repository.
+
+| Codebase                  |   Description    |
+| :------------------------ | :--------------: |
+| [server](packages/server) |   Fastify API    |
+| [app](packages/app)       | Next.js frontend |
 
 ## Features
 
 - A user-friendly, no-setup online integrated development environment (IDE).
 - Support languages like C, C++, python.
-- Preserve the correct the meaning of the code
+- Preserves the correct the meaning of the code
+- Supports input when running the compiled code
 
 ## Tech
 
 In compilerSmith we uses a number of open source technology:
 
-- [Next.js](https://nextjs.org/) - Open-source web development framework.
+- [Next.js](https://nextjs.org/) - Open-source web development framework for the frontend.It is built on top of React and supports many features such as Static site generation and server side rendering etc.
 - [Tailwind](https://tailwindcss.com/) - A utility-first CSS framework packed with classes like flex, pt-4, text-center and rotate-90 that can be composed to build any design, directly in your markup.
-- [TypeScript](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html) - TypeScript is a strongly typed programming language that builds on JavaScript.
+- [TypeScript](https://www.typescriptlang.org/docs/) - TypeScript is a strongly typed programming language that builds on JavaScript.
 - [Docker](https://docs.docker.com/) - Docker is a set of platform as a service products that use OS-level virtualization to deliver software in packages called containers.
-- [Fastify](https://www.fastify.io/) - Fastify is a web framework highly focused on providing the best developer experience with the least overhead and a powerful plugin.
+- [Fastify](https://www.fastify.io/) - Fastify is a web framework highly focused on providing the best developer experience with the least overhead and a powerful plugin. It is used to construct the backend api.
 
 ## Docker
 
 CompilerSmith is very easy to install and deploy in a Docker container.
-
 By default, the Docker will expose port 8080, so change this within the
 Dockerfile if necessary. When ready, simply use the Dockerfile to
 build the image.
@@ -39,30 +49,19 @@ cd packages/server
 docker build -t <youruser>/compilersmith:1.0 .
 ```
 
-This will create the compilersmith image and pull in the necessary dependencies.
-
-Once done, run the Docker image and map the port to whatever you wish on
-your host. In this example, we simply map port 5000 of the host to
+This will create the compilersmith image and pull in the necessary dependencies.Once done, run the Docker image and map the port to whatever you wish on your host. In this example, we simply map port 8080 of the host to
 port 8080 of the Docker (or whatever port was exposed in the Dockerfile):
 
 ```sh
-docker run -d -p 5000:8080 --name=compilersmith <youruser>/compilerSmith:1.0
+docker run -d -p 8080:8080 --name=compilersmith <youruser>/compilerSmith:1.0
 ```
 
 Verify the deployment by navigating to your server address in
 your preferred browser.
 
 ```sh
-127.0.0.1:5000
+127.0.0.1:8080
 ```
-
-## Server API method
-
-- endpoints / /code = post
-  /code body
-  - Lang
-  - code_input
-  - code_body
 
 ## Team members
 
@@ -74,26 +73,10 @@ your preferred browser.
 ## License
 
 MIT
-
 **Free Software, Hell Yeah!**
 
-[//]: # "These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax"
-[dill]: https://github.com/joemccann/dillinger
-[git-repo-url]: https://github.com/joemccann/dillinger.git
-[john gruber]: http://daringfireball.net
-[df1]: http://daringfireball.net/projects/markdown/
-[markdown-it]: https://github.com/markdown-it/markdown-it
-[ace editor]: http://ace.ajax.org
-[node.js]: http://nodejs.org
-[twitter bootstrap]: http://twitter.github.com/bootstrap/
-[jquery]: http://jquery.com
-[@tjholowaychuk]: http://twitter.com/tjholowaychuk
-[express]: http://expressjs.com
-[angularjs]: http://angularjs.org
-[gulp]: http://gulpjs.com
-[pldb]: https://github.com/joemccann/dillinger/tree/master/plugins/dropbox/README.md
-[plgh]: https://github.com/joemccann/dillinger/tree/master/plugins/github/README.md
-[plgd]: https://github.com/joemccann/dillinger/tree/master/plugins/googledrive/README.md
-[plod]: https://github.com/joemccann/dillinger/tree/master/plugins/onedrive/README.md
-[plme]: https://github.com/joemccann/dillinger/tree/master/plugins/medium/README.md
-[plga]: https://github.com/RahulHP/dillinger/blob/master/plugins/googleanalytics/README.md
+### Future
+
+- Add support for more languages
+- Create a sign up/sign in feature
+- Add more useful data into code output like (compilation time,memory consumed)

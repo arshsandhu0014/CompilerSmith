@@ -3,8 +3,6 @@ import Head from "next/head";
 import React from "react";
 import CodeConsole from "../components/coding-page/CodeConsole";
 import CodeEditor from "../components/coding-page/CodeEditor";
-import Navbar from "../components/nav/Navbar";
-import BackgroundImage from "../ui/BackgroundImage";
 
 const CodingPage: NextPage = () => {
   return (
