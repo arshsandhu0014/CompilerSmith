@@ -65,7 +65,7 @@ your preferred browser.
 
 ## Team members
 
-- [Shakil Ahmed (Team Lead)](https://github.com/ensorceler)
+- [Shakil Ahmed](https://github.com/ensorceler)
 - [Arshdeep Singh Sandhu](https://github.com/arshsandhu0014)
 - [Ravi Rawat](https://github.com/ravirawat0-cyber)
 - [Ayush kumar](https://github.com/ayushdotdev)
